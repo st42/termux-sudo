@@ -21,7 +21,7 @@ chmod 700 /data/data/com.termux/files/usr/bin/sudo
 **Features**
 
 - Sets up its environment automatically on first run, no need to do anything but use it
-- Creates a root folder (.suroot) in the Termux home folder with proper root permissions and ownership
+- Creates a root folder ```.suroot``` in the Termux home folder with proper root permissions and ownership
 - Creates .bashrc file in root folder with proper PATH and LD_LIBRARY_PATH variables set so all binaries function correctly
 - Bash prompt PS1 vairable is also set so you don't have ```bash-4.4#``` as prompt just ```#```
 - Can be used like ordinary sudo (but only as root, no other user)
