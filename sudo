@@ -46,7 +46,7 @@ if [ ! -d $ROOT_HOME ]; then
 	$SU -c "$MOUNT_RW"
 	$SU -c "mkdir $ROOT_HOME"
 	$SU -c "chmod 700 $ROOT_HOME"
-	BASHRC="'PS1=\"#\"\n$LDLP\nexport PATH=$PATH:$SYSBIN:$SYSXBIN'"
+	BASHRC="'PS1=\"#\"\nexport TERM=$TERM\n$LDLP\nexport PATH=$PATH:$SYSBIN:$SYSXBIN'"
 	$SU -c "echo -e $BASHRC > $ROOT_HOME/.bashrc"
 	$SU -c "chmod 700 $ROOT_HOME/.bashrc"
 	$SU -c "$MOUNT_RO"
