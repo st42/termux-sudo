@@ -29,7 +29,7 @@ PRE=/data/data/com.termux/files
 ROOT_HOME=$PRE/home/.suroot
 BINPRE=$PRE/usr/bin
 LDLP="export LD_LIBRARY_PATH=$PRE/usr/lib"
-CMDLINE="$LDLP;HOME=$ROOT_HOME;cd $PWD"
+CMDLINE="PATH=$PATH:$SYSXBIN:$SYSBIN;$LDLP;HOME=$ROOT_HOME;cd $PWD"
 
 if [ -x $SYSXBIN/su ]; then
 	SU=$SYSXBIN/su
@@ -56,7 +56,7 @@ if [ ! -d $ROOT_HOME ]; then
 	$SU -c "$MOUNT_RW"
 	$SU -c "mkdir $ROOT_HOME"
 	$SU -c "chmod 700 $ROOT_HOME"
-	BASHRC="'PS1=\"#\"\nexport TERM=$TERM\n$LDLP\nexport PATH=$PATH:$SYSBIN:$SYSXBIN'"
+	BASHRC="'PS1=\"#\"\nexport TERM=$TERM\n$LDLP\nexport PATH=$PATH:$SYSXBIN:$SYSBIN'"
 	$SU -c "echo -e $BASHRC > $ROOT_HOME/.bashrc"
 	$SU -c "chmod 700 $ROOT_HOME/.bashrc"
 	$SU -c "$MOUNT_RO"
