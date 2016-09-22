@@ -30,6 +30,7 @@ chmod 700 /data/data/com.termux/files/usr/bin/sudo
 - Runs built in Termux binaries and exteral binaries with optional arguments as root in current directory
 - Generates output in shell currently using
 - Can be used in other bash scripts
+- [option] Can turn off colored error messages be editing the variable ```colored``` at the beginning of sudo file
 
 ```
 Usage:
