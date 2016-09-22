@@ -75,4 +75,4 @@ else
 	echo -e "`color 2 Check your spelling and try again`\n"
 fi
 
-$SU -c "$CMDLINE"
+$SU --preserve-environment -c "$CMDLINE"
