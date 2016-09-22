@@ -1,7 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+#set colored=true to turn on colored error messages
+#set colored=false to turn off colored error messages
+colored=true
+
 #red=1 green=2 yellow=3
-color() { echo "$(tput setaf $1)${*:2}$(tput sgr0)"; }
+color() {
+	if [ $colored == "true" ]; then
+		echo "$(tput setaf $1)${*:2}$(tput sgr0)"
+	else
+		echo "${*:2}"
+	fi
+}
 
 show_usage() {
 	echo -e "\n`color 3 Usage:`\n"
