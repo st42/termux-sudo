@@ -62,13 +62,10 @@ if [ ! -d $ROOT_HOME ]; then
 	$SU -c "$MOUNT_RO"
 fi
 
-
 for i in "$@"
 do
 	ARGS=$ARGS\'$i\'" "
 done
-
-
 
 if [ -z "$*" ]; then
 	show_usage
