@@ -62,14 +62,22 @@ if [ ! -d $ROOT_HOME ]; then
 	$SU -c "$MOUNT_RO"
 fi
 
+
+for i in "$@"
+do
+	ARGS=$ARGS\'$i\'" "
+done
+
+
+
 if [ -z "$*" ]; then
 	show_usage
 elif [ $1 == "su" ]; then
 	CMDLINE="$CMDLINE;$BINPRE/bash"
 elif [ -x "$BINPRE/$1" ]; then
-	CMDLINE="$CMDLINE;$BINPRE/$*"
+	CMDLINE="$CMDLINE;$BINPRE/$ARGS"
 elif [ -x $SYSBIN/$1 ] || [ -x $SYSXBIN/$1 ] || [ -x $1 ]; then
-	CMDLINE="$CMDLINE;$*"
+	CMDLINE="$CMDLINE;$ARGS"
 else
 	echo -e "\nCommand `color 1 $1` not found"
 	echo -e "`color 2 Check your spelling and try again`\n"
