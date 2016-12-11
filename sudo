@@ -35,6 +35,8 @@ if [ -x $SYSXBIN/su ]; then
 	SU=$SYSXBIN/su
 elif [ -x /su/bin/su ]; then
 	SU=/su/bin/su
+elif [ -x /sbin/su ]; then
+	SU=/sbin/su
 else
 	echo -e "\n`color 1 su` executable not found"
 	echo -e "`color 1 sudo` requires `color 1 su`\n"
