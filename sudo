@@ -79,7 +79,7 @@ else
 	echo -e "`color 2 Check your spelling and try again`\n"
 fi
 
-pre_env_chk=`su --help|grep -e --preserve-environment`
+pre_env_chk=`$SU --help|grep -e --preserve-environment`
 if [ -n "$pre_env_chk" ]; then
         $SU --preserve-environment -c "$CMDLINE"
 else
