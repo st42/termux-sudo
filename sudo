@@ -85,3 +85,6 @@ if [ -n "$pre_env_chk" ]; then
 else
         $SU -c "$CMDLINE"
 fi
+
+# Reset echo
+stty sane
