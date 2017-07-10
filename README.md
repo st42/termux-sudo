@@ -11,7 +11,7 @@ SUDO WILL NOT WORK WITHOUT SU
 
 1. Download sudo to phone and extract
 2. Install a dependency needed for sudo:
-   pkg install ncurses-utils
+   ```pkg install ncurses-utils```
 3. Open Termux and change to extraction directory
 4. Execute the following commands to place sudo into the correct directory with the proper permissions and ownership
 
