@@ -28,7 +28,13 @@ BB=$SYSXBIN/busybox
 PRE=/data/data/com.termux/files
 ROOT_HOME=$PRE/home/.suroot
 BINPRE=$PRE/usr/bin
-LDLP="export LD_LIBRARY_PATH=$PRE/usr/lib"
+
+if [ -x /system/lib64 ]; then
+	LDLP="export LD_LIBRARY_PATH=/system/lib64:$PRE/usr/lib"
+else
+	LDLP="export LD_LIBRARY_PATH=$PRE/usr/lib"
+fi
+
 CMDLINE="PATH=$PATH:$SYSXBIN:$SYSBIN;$LDLP;HOME=$ROOT_HOME;cd $PWD"
 
 if [ -x $SYSXBIN/su ]; then
