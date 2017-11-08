@@ -10,10 +10,11 @@ SUDO WILL NOT WORK WITHOUT SU
 **Installing sudo**
 
 1. Download sudo to phone and extract
-2. Install a dependency needed for sudo:
+2. Open Termux
+3. Install a dependency needed for sudo:
    ```pkg install ncurses-utils```
-3. Open Termux and change to extraction directory
-4. Execute the following commands to place sudo into the correct directory with the proper permissions and ownership
+4. Change to extraction directory
+5. Execute the following commands to place sudo into the correct directory with the proper permissions and ownership
 
 ```
 cat sudo > /data/data/com.termux/files/usr/bin/sudo
