@@ -57,13 +57,24 @@ if [ ! -d $ROOT_HOME ]; then
 	fi
 	MOUNT_RW="$MOUNTEX -o rw,remount,rw /system"
 	MOUNT_RO="$MOUNTEX -o ro,remount,ro /system"
-	$SU -c "$MOUNT_RW"
-	$SU -c "mkdir $ROOT_HOME"
-	$SU -c "chmod 700 $ROOT_HOME"
-	BASHRC="'PS1=\"# \"\nexport TERM=$TERM\n$LDLP\nexport PATH=$PATH:$SYSXBIN:$SYSBIN'"
-	$SU -c "echo -e $BASHRC > $ROOT_HOME/.bashrc"
-	$SU -c "chmod 700 $ROOT_HOME/.bashrc"
-	$SU -c "$MOUNT_RO"
+	if [ -x "/sbin/magisk" ]; then
+		unset LD_LIBRARY_PATH
+		$SU -c "$CMDLINE;$MOUNT_RW"
+		$SU -c "$CMDLINE;mkdir $ROOT_HOME"
+		$SU -c "$CMDLINE;chmod 700 $ROOT_HOME"
+		BASHRC="'PS1=\"# \"\nexport TERM=$TERM\n$LDLP\nexport PATH=$PATH:$SYSXBIN:$SYSBIN'"
+		$SU -c "$CMDLINE;echo -e $BASHRC > $ROOT_HOME/.bashrc"
+		$SU -c "$CMDLINE;chmod 700 $ROOT_HOME/.bashrc"
+		$SU -c "$CMDLINE;$MOUNT_RO"
+	else
+		$SU -c "$MOUNT_RW"
+		$SU -c "mkdir $ROOT_HOME"
+		$SU -c "chmod 700 $ROOT_HOME"
+		BASHRC="'PS1=\"# \"\nexport TERM=$TERM\n$LDLP\nexport PATH=$PATH:$SYSXBIN:$SYSBIN'"
+		$SU -c "echo -e $BASHRC > $ROOT_HOME/.bashrc"
+		$SU -c "chmod 700 $ROOT_HOME/.bashrc"
+		$SU -c "$MOUNT_RO"
+	fi
 fi
 
 ARGS=$(printf '%q ' "$@")
