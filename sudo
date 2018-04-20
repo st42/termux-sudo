@@ -45,10 +45,6 @@ else
 	exit
 fi
 
-if [ -x "/sbin/magisk" ]; then
-	unset LD_LIBRARY_PATH
-fi
-
 if [ ! -d $ROOT_HOME ]; then
 	if [ -x $BB ] && [ $($BB --list | grep -w mount) == "mount" ]; then
 		MOUNTEX="$BB mount"
@@ -86,6 +82,11 @@ else
 fi
 
 pre_env_chk=`$SU --help|grep -e --preserve-environment`
+
+if [ -x "/sbin/magisk" ]; then
+	unset LD_LIBRARY_PATH
+fi
+
 if [ -n "$pre_env_chk" ]; then
         $SU --preserve-environment -c "$CMDLINE"
 else
